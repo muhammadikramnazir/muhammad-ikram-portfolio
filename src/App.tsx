@@ -45,7 +45,20 @@ function SpaceBackground() {
     <ambientLight intensity={.25} />
     <pointLight position={[5, 2, 5]} color="#00f0ff" intensity={12} />
     <pointLight position={[-5, -3, 2]} color="#9d00ff" intensity={10} />
-    <points ref={ref} positions={positions}><pointsMaterial color="#bdefff" size={.018} transparent opacity={.65} /></points>
+    <points ref={ref}>
+      <bufferGeometry>
+        <bufferAttribute
+          attach="attributes-position"
+          args={[positions, 3]}
+        />
+      </bufferGeometry>
+      <pointsMaterial
+        color="#bdefff"
+        size={0.018}
+        transparent
+        opacity={0.65}
+      />
+    </points>
     <Sparkles count={220} scale={[20, 12, 20]} size={1.2} speed={.25} color="#a8dcff" opacity={.45} />
     <Float speed={.6} rotationIntensity={.15} floatIntensity={.3}>
       <mesh position={[5, 1, -5]}><icosahedronGeometry args={[1.45, 1]} /><meshBasicMaterial color="#00f0ff" wireframe transparent opacity={.15} /></mesh>
